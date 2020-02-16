@@ -1,0 +1,11 @@
+commit 81041515fbd3af9e21815cabbce7188fe8e6aa5e (HEAD -> master)
+Author: AnastasiaGlavatskaya <alisa.gomel.15@mail.ru>
+Date:   Sun Feb 16 17:51:59 2020 +0300
+
+    add status.txt
+
+commit e60d254373eba6a0529cadd6f8f151b082e2921d
+Author: AnastasiaGlavatskaya <alisa.gomel.15@mail.ru>
+Date:   Sun Feb 16 17:43:59 2020 +0300
+
+    add .gitignore
