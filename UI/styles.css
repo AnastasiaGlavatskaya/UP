@@ -3,6 +3,18 @@ html {
     font-size : 14px;
     font-family: "Palatino Linotype";
 }
+ @media(max-width: 700px)  {
+     html {
+         font-size: 10px;
+     }
+     header img {
+         float : left;
+         margin-left: 0;
+         width: 50%;
+     }
+
+ }
+
 
 button {
     cursor : pointer;
@@ -100,6 +112,7 @@ footer .date {
     font-size: 110%;
     padding-left: 15%;
     padding-top: 1%;
+    padding-right: 2%;
 }
 .posts .post .hashtag {
     font-size: 110%;
@@ -112,6 +125,7 @@ footer .date {
     font-size: 90%;
     color: #EF7F1A;
     padding-left: 80%;
+    padding-right: 0.01%;
 }
 .posts .post button {
     font-size: 80%;
@@ -219,7 +233,7 @@ main .addPost button{
     margin-left: 7%;
     margin-top: 0.5rem;
 }
-textarea {
+.textBox textarea {
     clear: both;
     margin-top: 2%;
     margin-left: 5%;
