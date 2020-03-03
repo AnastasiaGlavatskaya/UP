@@ -233,7 +233,7 @@ main .addPost button{
     margin-left: 7%;
     margin-top: 0.5rem;
 }
-textarea {
+.textBox textarea {
     clear: both;
     margin-top: 2%;
     margin-left: 5%;
