@@ -1,0 +1,14 @@
+1. https://itunes.apple.com/search?country=US&term=bastille&media=music
+Запрос на поиск информации о музыкальных композициях (media=music) с ключевым словом Bastille (term=bastille)
+страна США (country=US)
+Получен список композиций с информацией и ссылками, соответствующий запросу
+
+2. https://itunes.apple.com/search?country=BY&media=music&limit=35&term=Naviband
+Запрос на поиск информации о музыкальных композициях (media=music) с ключевым словом Naviband (term=Naviband)
+страна Беларусь (country=BY), максимальное кол-во композиций в вывведенном списке 35 (limit=35)
+Получен список композиций с информацией и ссылками, соответствующий запросу
+
+3. https://itunes.apple.com/search?country=US&media=musicVideo&limit=33&term=radio
+Запрос на поиск информации о музыкальных видео (media=musicVideo) с ключевым словом radio (term=radio)
+страна США (country=US), максимальное кол-во композиций в вывведенном списке 33 (limit=33)
+Получен список из 28 видео с информацией и ссылками, соответствующих запросу
