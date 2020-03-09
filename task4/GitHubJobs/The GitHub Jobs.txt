@@ -1,0 +1,18 @@
+1. https://jobs.github.com/positions.json?description=python&full_time=true&location=london
+Запрос на поиск вакансий. Параметр поиска python (description=python), 
+параметр полный ли рабочй день - true (full_time=true), место Лондон (location=london)
+В итоге получен список вакансий, подходящий под параметры поиска с названиеями компаний, местом, описанием
+должности и т.д.
+
+2. https://jobs.github.com/positions.json?description=java&lat=53.9&long=27.56667&full_time=true
+Запрос на поиск вакансий. Параметр поиска java (description=java), 
+параметр полный ли рабочй день - true (full_time=true), место задано с помощью широты и долготы 
+(lat=53.9&long=27.56667 - координаты Минска)
+В итоге получен список вакансий в Минске, подходящий под остальные параметры поиска с названиеями компаний, местом, описанием
+должности и т.д.
+
+3. https://jobs.github.com/positions.json?description=java&full_time=true&markdown=true&location=NewYork
+Запрос на поиск вакансий. Параметр полный ли рабочй день - true (full_time=true), место NewYork (location=NewYork), 
+markdown=true - параметр для получения дополнитьных граф description и how_to_apply
+В итоге получен список вакансий, подходящий под параметры поиска с названиеями компаний, местом, описанием
+должностей, доп. информацией description и how_to_apply и т.д.
