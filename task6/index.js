@@ -187,6 +187,10 @@ let posts = [
 
 ];
 
+function sortByDate(posts) {
+    return posts.sort((a, b) => a.createdAt.getTime() > b.createdAt.getTime() ? -1 : 1);
+}
+
 function getPosts(skip, top, filterConfig) {
     var result = posts;
     var from = skip || 0;
@@ -219,6 +223,7 @@ function getPosts(skip, top, filterConfig) {
             })
         }
     }
+    result = sortByDate(result);
     return result.slice(from, from + number);
 }
 
