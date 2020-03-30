@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "11d3e904-b936-4d27-b60c-fe341f88e79f",
+		"name": "task4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "iTunes",
+			"item": [
+				{
+					"name": "https://itunes.apple.com/search?country=US&media=musicVideo&limit=33&term=radio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://itunes.apple.com/search?country=US&media=musicVideo&limit=33&term=radio",
+							"protocol": "https",
+							"host": [
+								"itunes",
+								"apple",
+								"com"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "US"
+								},
+								{
+									"key": "media",
+									"value": "musicVideo"
+								},
+								{
+									"key": "limit",
+									"value": "33"
+								},
+								{
+									"key": "term",
+									"value": "radio"
+								}
+							]
+						},
+						"description": "3. Запрос на поиск информации о музыкальных видео (media=musicVideo) с ключевым словом radio (term=radio)\r\nстрана США (country=US), максимальное кол-во композиций в вывведенном списке 33 (limit=33)\r\nПолучен список из 28 видео с информацией и ссылками, соответствующих запросу"
+					},
+					"response": []
+				},
+				{
+					"name": "https://itunes.apple.com/search?country=US&term=bastille&media=music",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://itunes.apple.com/search?country=US&term=bastille&media=music",
+							"protocol": "https",
+							"host": [
+								"itunes",
+								"apple",
+								"com"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "US"
+								},
+								{
+									"key": "term",
+									"value": "bastille"
+								},
+								{
+									"key": "media",
+									"value": "music"
+								}
+							]
+						},
+						"description": "1. Запрос на поиск информации о музыкальных композициях (media=music) с ключевым словом Bastille (term=bastille)\r\nстрана США (country=US)\r\nПолучен список композиций с информацией и ссылками, соответствующий запросу"
+					},
+					"response": []
+				},
+				{
+					"name": "https://itunes.apple.com/search?country=BY&media=music&limit=35&term=Naviband",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://itunes.apple.com/search?country=BY&media=music&limit=35&term=Naviband",
+							"protocol": "https",
+							"host": [
+								"itunes",
+								"apple",
+								"com"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "BY"
+								},
+								{
+									"key": "media",
+									"value": "music"
+								},
+								{
+									"key": "limit",
+									"value": "35"
+								},
+								{
+									"key": "term",
+									"value": "Naviband"
+								}
+							]
+						},
+						"description": "2. Запрос на поиск информации о музыкальных композициях (media=music) с ключевым словом Naviband (term=Naviband)\r\nстрана Беларусь (country=BY), максимальное кол-во композиций в вывведенном списке 35 (limit=35)\r\nПолучен список композиций с информацией и ссылками, соответствующий запросу"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "NASA",
+			"item": [
+				{
+					"name": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-03-08&hd=True",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-03-08&hd=True",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nasa",
+								"gov"
+							],
+							"path": [
+								"planetary",
+								"apod"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "DEMO_KEY"
+								},
+								{
+									"key": "date",
+									"value": "2020-03-08"
+								},
+								{
+									"key": "hd",
+									"value": "True"
+								},
+								{
+									"key": "concept_tags",
+									"value": "True",
+									"disabled": true
+								}
+							]
+						},
+						"description": "1.\r\nВведен запрос с сайта Astronomy Picture of the Day для получения \"фото дня\" и \r\nего краткого описания за 08.03.2020 (один из параметров). Следующий параметр \"hd=True\" \r\nдля получения картинки в высоком разрешении.\r\nВ результате получена ссылка на изображение, название и краткое описание изображенной звезды"
+					},
+					"response": []
+				},
+				{
+					"name": "https://api.nasa.gov/planetary/earth/imagery/?api_key=DEMO_KEY&lon=30.24&lat=54.22&date=2013-12-25&cloud_score=True",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.nasa.gov/planetary/earth/imagery/?api_key=DEMO_KEY&lon=30.24&lat=54.22&date=2013-12-25&cloud_score=True",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nasa",
+								"gov"
+							],
+							"path": [
+								"planetary",
+								"earth",
+								"imagery",
+								""
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "DEMO_KEY"
+								},
+								{
+									"key": "lon",
+									"value": "30.24"
+								},
+								{
+									"key": "lat",
+									"value": "54.22"
+								},
+								{
+									"key": "date",
+									"value": "2013-12-25"
+								},
+								{
+									"key": "cloud_score",
+									"value": "True"
+								}
+							]
+						},
+						"description": "2. \r\nЗапрос для получения снимка участка Земли с определенной долготой (lon=30.24), широтой (lat=54.22),\r\nблизко к указанной дате (25.12.2013) и с указанием процента изображения, покрытого облаками\r\nВ результате получена ссылка на изображение, процент покрытия облаками, дата снимка, ближайшая к \r\nуказанной (\"date\": \"2013-12-10T09:01:57\")"
+					},
+					"response": []
+				},
+				{
+					"name": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=DEMO_KEY&earth_date=2015-6-3&camera=rhaz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=DEMO_KEY&earth_date=2015-6-3&camera=rhaz",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nasa",
+								"gov"
+							],
+							"path": [
+								"mars-photos",
+								"api",
+								"v1",
+								"rovers",
+								"curiosity",
+								"photos"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "DEMO_KEY"
+								},
+								{
+									"key": "earth_date",
+									"value": "2015-6-3"
+								},
+								{
+									"key": "camera",
+									"value": "rhaz"
+								}
+							]
+						},
+						"description": "3. \r\nЗапрос для получения снимка, сделанного на Марсе в определенный день (earth_date=2015-6-3) на Rear Hazard Avoidance Camera (camera=rhaz)\r\nВ результате получен снимок и краткая информация о нем"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GitHubJobs",
+			"item": [
+				{
+					"name": "https://jobs.github.com/positions.json?description=python&full_time=true&location=london",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jobs.github.com/positions.json?description=python&full_time=true&location=london",
+							"protocol": "https",
+							"host": [
+								"jobs",
+								"github",
+								"com"
+							],
+							"path": [
+								"positions.json"
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "python"
+								},
+								{
+									"key": "full_time",
+									"value": "true"
+								},
+								{
+									"key": "location",
+									"value": "london"
+								}
+							]
+						},
+						"description": "1. \r\nЗапрос на поиск вакансий. Параметр поиска python (description=python), \r\nпараметр полный ли рабочй день - true (full_time=true), место Лондон (location=london)\r\nВ итоге получен список вакансий, подходящий под параметры поиска с названиеями компаний, местом, описанием\r\nдолжности и т.д."
+					},
+					"response": []
+				},
+				{
+					"name": "https://jobs.github.com/positions.json?description=java&lat=53.9&long=27.56667&full_time=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jobs.github.com/positions.json?description=java&lat=53.9&long=27.56667&full_time=true",
+							"protocol": "https",
+							"host": [
+								"jobs",
+								"github",
+								"com"
+							],
+							"path": [
+								"positions.json"
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "java"
+								},
+								{
+									"key": "lat",
+									"value": "53.9"
+								},
+								{
+									"key": "long",
+									"value": "27.56667"
+								},
+								{
+									"key": "full_time",
+									"value": "true"
+								}
+							]
+						},
+						"description": "2. \r\nЗапрос на поиск вакансий. Параметр поиска java (description=java), \r\nпараметр полный ли рабочй день - true (full_time=true), место задано с помощью широты и долготы \r\n(lat=53.9&long=27.56667 - координаты Минска)\r\nВ итоге получен список вакансий в Минске, подходящий под остальные параметры поиска с названиеями компаний, местом, описанием\r\nдолжности и т.д."
+					},
+					"response": []
+				},
+				{
+					"name": "https://jobs.github.com/positions.json?description=java&full_time=true&markdown=true&location=NewYork",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jobs.github.com/positions.json?description=java&full_time=true&markdown=true&location=NewYork",
+							"protocol": "https",
+							"host": [
+								"jobs",
+								"github",
+								"com"
+							],
+							"path": [
+								"positions.json"
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "java"
+								},
+								{
+									"key": "full_time",
+									"value": "true"
+								},
+								{
+									"key": "markdown",
+									"value": "true"
+								},
+								{
+									"key": "location",
+									"value": "NewYork"
+								}
+							]
+						},
+						"description": "3. \r\nЗапрос на поиск вакансий. Параметр полный ли рабочй день - true (full_time=true), место NewYork (location=NewYork), \r\nmarkdown=true - параметр для получения дополнитьных граф description и how_to_apply\r\nВ итоге получен список вакансий, подходящий под параметры поиска с названиеями компаний, местом, описанием\r\nдолжностей, доп. информацией description и how_to_apply и т.д."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
