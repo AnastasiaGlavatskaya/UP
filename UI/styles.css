@@ -3,17 +3,17 @@ html {
     font-size : 14px;
     font-family: "Palatino Linotype";
 }
- @media(max-width: 700px)  {
-     html {
-         font-size: 10px;
-     }
-     header img {
-         float : left;
-         margin-left: 0;
-         width: 50%;
-     }
+@media(max-width: 700px)  {
+    html {
+        font-size: 10px;
+    }
+    header img {
+        float : left;
+        margin-left: 0;
+        width: 50%;
+    }
 
- }
+}
 
 
 button {
@@ -33,7 +33,7 @@ header img {
     margin-left: 5rem;
     height : 100%;
 }
-header .name {
+header .username {
     position: fixed;
     left: 60%;
     float: left;
@@ -83,7 +83,7 @@ footer .date {
     margin-top: 1rem;
 }
 .posts {
-   min-height: 100%;
+    min-height: 100%;
     width: 70%;
     margin-left: 30%;
     margin-top: 8rem;
@@ -97,7 +97,7 @@ footer .date {
     border: 0.05rem solid silver;
 }
 .posts .post img {
-    width: 10%;
+    width: 7.7%;
     padding-top: 0.5%;
     padding-left: 0.5%;
     float: left;
@@ -109,14 +109,15 @@ footer .date {
     padding-left: 5%;
 }
 .posts .post .text {
+
     font-size: 110%;
-    padding-left: 15%;
+    padding-left: 13%;
     padding-top: 1%;
     padding-right: 2%;
 }
 .posts .post .hashtag {
     font-size: 110%;
-    padding-left: 15%;
+    padding-left: 13%;
     color: #D44B23;
 }
 
@@ -124,7 +125,7 @@ footer .date {
     font-family: Georgia;
     font-size: 90%;
     color: #EF7F1A;
-    padding-left: 80%;
+    padding-left: 77%;
     padding-right: 0.01%;
 }
 .posts .post button {
@@ -132,8 +133,13 @@ footer .date {
     margin-left: 5%;
     margin-top: 1%;
 }
-
+.edit {
+    visibility: hidden;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.1rem;
+}
 .posts .post .edit button {
+
     font-size: 90%;
     margin-top: 0.5%;
     margin-left : 8%;
@@ -240,3 +246,4 @@ main .addPost button{
     max-width: 90%;
 
 }
+

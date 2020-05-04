@@ -5,12 +5,16 @@
     <title>Fox paw</title>
     <link rel="shortcut icon" href="fox_paw.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="styles.css" >
+    <script src="script.js"></script>
    <!--  -->
 </head>
 <header>
     <img src="fox_paw_logo.png" id="header_logo" align="justify" alt="logo"/>
-    <div class="name">
-        ИмяПользователя
+    <div class="username" id="username">
+        <template id="userTemplate">
+            <div class="name" data-target="globalName"></div>
+
+        </template>
     </div>
     <div class="logOut">
         Выйти
@@ -19,39 +23,12 @@
 <body>
 
 <main>
-<div class="posts">
-    <div class="post">
-        <img src="fox_avatar.jpg" id="avatar" align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
+<div class="posts" id="notes">
+
+    <template id="template">
+    <div class="post" id="">
         <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
+        <div class="name" data-target="author">
         </div>
         <div class="edit">
             <button>
@@ -61,251 +38,24 @@
                 Удалить
             </button>
         </div>
-        <div class="text">
-            Text TextText
+
+
+        <div class="text" data-target="description">
+
         </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text
-        </div>
-        <div class="hashtag">
-            #tag #tag
+        <div class="hashtag" data-target="hashTags" >
         </div>
         <div class="like">
             <button>
                 Мне нравится
             </button>
         </div>
-        <div class="time">
-            14:00 22.02.2020
+        <div class="time" data-target="createdAt">
+
         </div>
     </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text Text Text Text TextTextTextText
-            TextTextT extT ext Text Text TextTextText
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text Text Text Text TextTextTextText
-            TextTextT extT ext Text Text TextTextText
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text Text Text Text TextTextTextText
-            TextTextT extT ext Text Text TextTextText
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text Text Text Text TextTextTextText
-            TextTextT extT ext Text Text TextTextText
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text Text Text Text TextTextTextText
-            TextTextT extT ext Text Text TextTextText
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text Text Text Text TextTextTextText
-            TextTextT extT ext Text Text TextTextText
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
-    <div class="post">
-        <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
-        <div class="name">
-            Имя Пользователя
-        </div>
-        <div class="edit">
-            <button>
-                Редактировать
-            </button>
-            <button>
-                Удалить
-            </button>
-        </div>
-        <div class="text">
-            Text Text
-        </div>
-        <div class="hashtag">
-            #tag #tag
-        </div>
-        <div class="like">
-            <button>
-                Мне нравится
-            </button>
-        </div>
-        <div class="time">
-            14:00 22.02.2020
-        </div>
-    </div>
+    </template>
+
 
 
     <div class="loadMore">
