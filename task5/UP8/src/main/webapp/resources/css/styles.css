@@ -1,0 +1,249 @@
+
+html {
+    font-size : 14px;
+    font-family: "Palatino Linotype";
+}
+@media(max-width: 700px)  {
+    html {
+        font-size: 10px;
+    }
+    header img {
+        float : left;
+        margin-left: 0;
+        width: 50%;
+    }
+
+}
+
+
+button {
+    cursor : pointer;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8rem;
+    border: 0.1rem solid silver;
+    background-color: white;
+}
+header img {
+    float : left;
+    margin-left: 5rem;
+    height : 100%;
+}
+header .username {
+    position: fixed;
+    left: 60%;
+    float: left;
+    font-size: 160%;
+    font-weight: bold;
+    margin-top: 3rem;
+}
+header .logOut {
+    font-size: 180%;
+    text-decoration: underline;
+    color: #D44B23;
+    margin-left: 85%;
+    margin-top: 3rem;
+    cursor : pointer;
+}
+header .logOut:active {
+    color: #EF7F1A;
+    transition: color 0s
+}
+
+footer {
+    font-family: "Times New Roman";
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+    border: 0.1rem solid silver;
+    background-color: white;
+}
+footer .information {
+    font-size: 115%;
+    width: 20%;
+    white-space: pre-wrap;
+    margin-left: 80%;
+    color: #D44B23;
+}
+footer img {
+    float : left;
+    margin-left: 45%;
+    height : 4rem;
+}
+footer .date {
+    float : left;
+    color: #D44B23;
+    font-size: 130%;
+    margin-top: 1rem;
+}
+.posts {
+    min-height: 100%;
+    width: 70%;
+    margin-left: 30%;
+    margin-top: 8rem;
+    margin-bottom: 6rem;
+    float : left;
+}
+
+.posts .post {
+    height: 100%;
+    width: 58%;
+    border: 0.05rem solid silver;
+}
+.posts .post img {
+    width: 7.7%;
+    padding-top: 0.5%;
+    padding-left: 0.5%;
+    float: left;
+}
+.posts .post .name {
+    float: left;
+    font-size: 110%;
+    font-weight: bold;
+    padding-left: 5%;
+}
+.posts .post .text {
+
+    font-size: 110%;
+    padding-left: 13%;
+    padding-top: 1%;
+    padding-right: 2%;
+}
+.posts .post .hashtag {
+    font-size: 110%;
+    padding-left: 13%;
+    color: #D44B23;
+}
+
+.posts .post .time {
+    font-family: Georgia;
+    font-size: 90%;
+    color: #EF7F1A;
+    padding-left: 77%;
+    padding-right: 0.01%;
+}
+.posts .post button {
+    font-size: 80%;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+.edit {
+    visibility: hidden;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.1rem;
+}
+.posts .post .edit button {
+
+    font-size: 90%;
+    margin-top: 0.5%;
+    margin-left : 8%;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    color: white;
+    border-radius: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.1rem;
+    background-image: linear-gradient(to right, #EF7F1A 0%, #D44B23 51%, #EF7F1A 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 1rem silver;
+    transition: 0s;
+}
+
+main .addPost button{
+    position: fixed;
+    top: 12rem;
+    left: 80%;
+    font-size: 130%;
+
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    overflow: hidden;
+    border: 0.2rem solid #D44B23;
+    border-radius: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #D44B23;
+    transition: .2s ease-in-out;
+}
+.addPost button:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    top: -1rem;
+    left: -5rem;
+    transform: skewX(-45deg);
+}
+.addPost button:hover {
+    background: #D44B23;
+    color: white;
+}
+.addPost button:hover:before {
+    left: 10rem;
+    transition: .5s ease-in-out;
+}
+.post .like button {
+    font-size: 110%;
+    padding: 0;
+    border: none;
+    background-color: white;
+    font-style: italic;
+    text-decoration: underline;
+    color: #EF7F1A;
+}
+.loadMore button {
+    margin-left: 21%;
+    margin-top: 0.8rem;
+    font-size: 120%;
+    color: #252726;
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+}
+.post .like:active, .loadMore:active {
+    transform: translateY(5%);
+    filter: saturate(150%);
+}
+.filters {
+    position: fixed;
+    left: 0;
+    right: 70%;
+    bottom:5rem;
+    top : 8rem;
+    width: 30%;
+}
+
+.filters .title {
+    font-size: 130%;
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 1rem;
+}
+.filters .filterTitle {
+    font-size: 110%;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-top: 1rem;
+}
+.filters .dateTitle {
+    font-size: 110%;
+    font-weight: bold;
+    margin-left: 7%;
+    margin-top: 0.5rem;
+}
+.textBox textarea {
+    clear: both;
+    margin-top: 2%;
+    margin-left: 5%;
+    max-width: 90%;
+
+}
+
