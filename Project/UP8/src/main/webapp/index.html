@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fox paw</title>
+    <link rel="shortcut icon" href="resources/png/fox_paw.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css" >
+    <script src="resources/js/script.js"></script>
+    <!--  -->
+</head>
+<header>
+    <img src="resources/png/fox_paw_logo.png" id="header_logo" align="justify" alt="logo"/>
+    <div class="username" id="username">
+        <template id="userTemplate">
+            <div class="name" data-target="globalName"></div>
+
+        </template>
+    </div>
+    <div class="logOut">
+        Выйти
+    </div>
+</header>
+<body>
+
+<main>
+    <div class="posts" id="notes">
+
+        <template id="template">
+            <div class="post" id="">
+                <img src="resources/png/fox_avatar.jpg"  align="justify" alt="avatar"/>
+                <div class="name" data-target="author">
+                </div>
+                <div class="edit">
+                    <button>
+                        Редактировать
+                    </button>
+                    <button>
+                        Удалить
+                    </button>
+                </div>
+
+
+                <div class="text" data-target="description">
+
+                </div>
+                <div class="hashtag" data-target="hashTags" >
+                </div>
+                <div class="like">
+                    <button>
+                        Мне нравится
+                    </button>
+                </div>
+                <div class="time" data-target="createdAt">
+
+                </div>
+            </div>
+        </template>
+
+
+
+        <div class="loadMore">
+            <button>
+                Загрузить еще
+            </button>
+        </div>
+    </div>
+
+    <div class="addPost">
+        <button>
+            Добавить пост
+        </button>
+    </div>
+
+    <div class="filters">
+        <div class="title">
+            Поиск
+        </div>
+        <div class="byName">
+            <div class="filterTitle">
+                По имени автора:
+            </div>
+            <div class="textBox">
+                <textarea name="text" cols="30" rows="1">
+Введите имя пользователя
+                </textarea>
+            </div>
+        </div>
+        <div class="byDate">
+            <div class="filterTitle">
+                По дате:
+            </div>
+            <div class="dateTitle">
+                с:
+            </div>
+            <div class="dateTitle">
+                по:
+            </div>
+        </div>
+        <div class="byTags">
+            <div class="filterTitle">
+                По хештегам:
+            </div>
+            <div class="textBox">
+                <textarea name="text" cols="30" rows="1">
+#хештег #хештег
+                </textarea>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <img src="resources/png/fox_paw_text.png" id="logo" align="justify" alt="logo"/>
+    <div class="date">
+        ,  02.03.2020
+    </div>
+    <div class="information">Glavatskaya A., group №5
+        email   alisa.gomel.15@mail.ru
+        fpm.glavatsk@bsu.by
+    </div>
+</footer>
+
+
+</body>
+</html>
