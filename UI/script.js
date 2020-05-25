@@ -373,7 +373,7 @@ class Work {
         document.posts.innerHTML = "";
         filter = {
             author: document.filters.author.value,
-            dateFrom: new Date(document.filters.dateFrom.value), //сделать штуку с галочкой, чтобы
+            dateFrom: new Date(document.filters.dateFrom.value),
             dateTo: new Date(document.filters.dateTo.value),
             hashTags: document.filters.tags.value.split(" ").filter(element => element !== "")
         };
