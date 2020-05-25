@@ -1,5 +1,9 @@
-let user = {"globalName" : "Анастасия"};
-
+let user = {"globalName" : ""};
+let i = 30;
+let posts;
+let skip = 10;
+let filter;
+let postToEditId = 1;
 class PostList {
     constructor(posts) {
         this._posts = posts || [];
@@ -152,13 +156,38 @@ class PostList {
     clear() {
         this._posts = [];
     }
-     
+
+
+    save() {
+        localStorage.setItem("posts", JSON.stringify(this._posts));
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("lastId", JSON.stringify(i));
+    }
+
+    restore(){
+        let user1 = JSON.parse(localStorage.getItem("user"));
+        posts = JSON.parse(localStorage.getItem("posts"));
+        let j = JSON.parse(localStorage.getItem("lastId"));
+
+        if (j != undefined && j !== "" && j != null) {
+            i = j;
+        }
+        if (user1 != undefined && user1.globalName !== "" && user1 != null) {
+            user = JSON.parse(localStorage.getItem("user"));
+            view.setName();
+            work.authorized();
+        }
+        if (posts == undefined || posts === "[]" || posts === null) {
+            posts = posts1;
+        }
+        else {
+            posts.forEach(el => el.createdAt = new Date(el.createdAt));
+        }
+    }
 }
 
 
 class View {
-
-
     setName(){
         let container1 = document.getElementById('username');
         let template1 = document.getElementById('userTemplate');
@@ -170,7 +199,6 @@ class View {
                 phElement.textContent = String(user[key]);
         });
         container1.appendChild(newNote);
-
     }
 
     template = document.getElementById('template');
@@ -194,9 +222,15 @@ class View {
                 phElement.textContent = String(data[key].toLocaleString());
             }
             else
+            if (key == 'photoLink' && String(data[key].toLocaleString()) != "") {
+                phElement.src = String(data[key].toLocaleString());
+            }
+            else
                 phElement.textContent = String(data[key]);
+
         });
         newNote.firstElementChild.setAttribute('id', data.id);
+
     }
 
     addItem(post) {
@@ -209,6 +243,16 @@ class View {
         posts.forEach((post) => this.addItem(post));
     }
 
+    load(post) {
+        let newNote = document.importNode(this.template.content, true);
+        this.fillItemData(newNote, post);
+        this.container.insertBefore(newNote, this.container.lastElementChild);
+    }
+
+    loadAll(posts) {
+        posts.forEach((post) => this.load(post));
+    }
+
     edit(id, post) {
         let newNote = document.importNode(this.template.content, true);
         this.fillItemData(newNote, post);
@@ -218,6 +262,7 @@ class View {
     remove(id) {
         document.getElementById(id).remove();
     }
+
 }
 
 
@@ -225,6 +270,23 @@ function addPost(post) {
     if (tweets.add(post))
         view.addItem(post);
 }
+
+function addNewPost(description, tags, photoLink) {
+    let newPost = {
+        id: i++,
+        description: description,
+        createdAt: new Date(),
+        author: user.globalName,
+        photoLink: photoLink,
+        hashTags: tags.split(" ").filter(element => element !== ""),
+        likes: []
+    }
+
+    if (tweets.add(newPost))
+        view.addItem(newPost);
+    skip++;
+}
+
 function addAllPosts(posts) {
     if (tweets.addAll(posts))
         view.addAll(posts);
@@ -238,17 +300,147 @@ function editPost(id, post) {
         view.edit(id, tweets.get(id));
 }
 
+class Work {
+
+    load() {
+        view.loadAll(tweets.getPage(skip, "", filter));
+        if (Object.keys(tweets.getPage(skip, "", filter)).length < 10) document.getElementById("load").style.visibility = "hidden";
+        skip += 10;
+    }
+    authorized() {
+        document.getElementsByClassName("sign-block")[0].style.visibility = "hidden";
+        document.getElementsByClassName("logIn")[0].style.visibility = "hidden";
+        document.getElementsByClassName("logOut")[0].style.visibility = "visible";
+        document.getElementsByClassName("addPost")[0].style.visibility = "visible";
+        document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addPost);
+        document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addPostForm);
+        document.getElementsByClassName("addPost")[0].addEventListener('click', work.addPostForm);
+    }
+    logIn() {
+        if (document.sign.log.value !== "" && document.sign.password.value !== "") {
+            user.globalName = document.sign.log.value;
+            view.setName();
+            work.authorized();
+            location.reload();
+            //document.posts.innerHTML = "";
+            skip=10;
+            view.loadAll(tweets.getPage());
+            document.getElementById("load").style.visibility = "visible";
+        }
+        tweets.save();
+    }
+    logOut() {
+        document.sign.password.value = "";
+        document.getElementsByClassName("name")[0].remove();
+        document.getElementsByClassName("sign-block")[0].style.visibility="visible";
+        document.getElementsByClassName("logIn")[0].style.visibility="visible";
+        document.getElementsByClassName("logOut")[0].style.visibility="hidden";
+        document.getElementsByClassName("addEditPost")[0].style.visibility = "hidden";
+        document.getElementsByClassName("addPost")[0].style.visibility = "hidden";
+        user.globalName = "";
+        tweets.save();
+        document.getElementsByClassName("addPost")[0].addEventListener('click', work.addPostForm);
+        document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addPost);
+        location.reload();
+        //document.posts.innerHTML = "";
+        skip=10;
+        view.loadAll(tweets.getPage());
+    }
+
+    addPostForm() {
+        if (user.globalName !== "") {
+            document.getElementsByClassName("addEditPost")[0].style.visibility = "visible";
+            document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addPostForm);
+            document.getElementsByClassName("addPost")[0].addEventListener('click', work.addPost);
+        }
+    }
+
+    addPost() {
+        filter = "";
+        if (document.addEditPost.description.value !== "") {
+            addNewPost(document.addEditPost.description.value, document.addEditPost.addHashtags.value, document.addEditPost.photoLink.value);
+            document.getElementsByClassName("addPost")[0].addEventListener('click', work.addPostForm);
+            document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addPost);
+            document.getElementsByClassName("addEditPost")[0].style.visibility = "hidden";
+            document.addEditPost.description.value = "";
+            document.addEditPost.addHashtags.value = "";
+            document.addEditPost.photoLink.value = "";
+            tweets.save();
+        }
+    }
+
+    filter() {
+        document.posts.innerHTML = "";
+        filter = {
+            author: document.filters.author.value,
+            dateFrom: new Date(document.filters.dateFrom.value),
+            dateTo: new Date(document.filters.dateTo.value),
+            hashTags: document.filters.tags.value.split(" ").filter(element => element !== "")
+        };
+        skip = 10;
+        view.loadAll(tweets.getPage(skip-10, 10, filter));
+        if (Object.keys(tweets.getPage(skip-10, "", filter)).length >= 10)
+            document.getElementById("load").style.visibility = "visible";
+        else {
+            document.getElementById("load").style.visibility = "hidden";
+        }
+        //последний пост почему-то уезжает вниз при фильтрации
+    }
+
+    editButtons(event) {
+        if (event.target.tagName == 'BUTTON' && event.target.className === "deleteButton") {
+            let nodeToDelete = event.target.parentElement.parentElement.id;
+            removePost(nodeToDelete);
+            tweets.save();
+        }
+        if (event.target.tagName == 'BUTTON' && event.target.className === "editButton") {
+            let id = event.target.parentElement.parentElement.id;
+            let postToEdit = tweets.get(id);
+            document.getElementsByClassName("addEditPost")[0].style.visibility = "visible";
+            document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addPostForm);
+            document.addEditPost.description.value = postToEdit.description;
+            document.addEditPost.addHashtags.value = postToEdit.hashTags.map(item => ' ' + item).join('');
+            document.addEditPost.photoLink.value = postToEdit.photoLink;
+            document.getElementsByClassName("addPost")[0].addEventListener('click', work.addEdited);
+            postToEditId = id;
+            tweets.save();
+        }
+    }
+
+    addEdited() {
+        let newPost = {
+            description: document.addEditPost.description.value,
+            photoLink: document.addEditPost.photoLink.value,
+            hashTags: document.addEditPost.addHashtags.value.split(" ").filter(element => element !== ""),
+        };
+        editPost(postToEditId, newPost);
+        document.getElementsByClassName("addPost")[0].removeEventListener('click', work.addEdited);
+        document.getElementsByClassName("addPost")[0].addEventListener('click', work.addPostForm);
+        editPost();
+        document.getElementsByClassName("addEditPost")[0].style.visibility = "hidden";
+        document.addEditPost.description.value = "";
+        document.addEditPost.addHashtags.value = "";
+        document.addEditPost.photoLink.value = "";
+    }
+}
+
 window.onload = () => {
     tweets = new PostList();
     view = new View();
-
-    addAllPosts(posts1);
-    addPost(valid);
-    editPost("21", { description: "new text"})
-    editPost("21", { hashTags: ["new tag", "tag"] });
-    removePost("2");
-    view.setName();
+    work = new Work();
+    tweets.restore();
+    tweets.addAll(posts);
+    view.loadAll(tweets.getPage());
+    document.getElementById("load").addEventListener('click', work.load);
+    document.getElementsByClassName("logIn")[0].addEventListener('click', work.logIn);
+    document.getElementsByClassName("logOut")[0].addEventListener('click', work.logOut);
+    document.getElementsByClassName("addPost")[0].addEventListener('click', work.addPostForm);
+    document.getElementsByClassName("find")[0].addEventListener('click', work.filter);
+    document.getElementsByClassName("postsForm")[0].addEventListener('click', work.editButtons);
 }
+
+
+
 
 
 let posts1 = [
@@ -256,7 +448,7 @@ let posts1 = [
         id: "1",
         description: "Более 76 тыс. человек во всем мире уже излечились от заболевания, " +
             "спровоцированного новым коронавирусом, тогда как количество смертей превысило 6,4 тыс.",
-        createdAt: new Date('2020-03-17T23:00:00'),
+        createdAt: new Date('2020-03-15T23:00:00'),
         author: "Иванов Иван",
         photoLink: "https://www.pressball.by/images/stories/2020/03/20200310231542.jpg",
         hashTags: [],
@@ -265,7 +457,7 @@ let posts1 = [
     {
         id: "2",
         description: "text2",
-        createdAt: new Date('2020-03-17T23:00:00'),
+        createdAt: new Date('2020-03-16T23:00:00'),
         author: "Анастасия",
         photoLink: "",
         hashTags: ["hashtag", "tag"],
@@ -303,11 +495,61 @@ let posts1 = [
     {
         id: "6",
         description: "text6",
-        createdAt: new Date('2020-03-25T23:00:00'),
+        createdAt: new Date('2020-03-17T23:00:00'),
         author: "Анастасия",
         photoLink: "",
         hashTags: [],
         likes: []
+    },
+    {
+        id: "7",
+        description: "text7",
+        createdAt: new Date('2020-03-17T23:00:00'),
+        author: "Анастасия",
+        photoLink: "",
+        hashTags: ["hashtag", "tag"],
+        likes: []
+
+    },
+    {
+        id: "8",
+        description: "text8",
+        createdAt: new Date('2020-03-17T23:00:00'),
+        author: "Анастасия",
+        photoLink: "",
+        hashTags: ["hashtag", "tag"],
+        likes: []
+
+    },
+    {
+        id: "9",
+        description: "text9",
+        createdAt: new Date('2020-03-17T23:00:00'),
+        author: "Анастасия",
+        photoLink: "",
+        hashTags: ["hashtag", "tag"],
+        likes: []
+
+    },
+    {
+        id: "10",
+        description: "одна ошибка и ты ошибся",
+        createdAt: new Date('2020-03-17T23:00:00'),
+        author: "Анастасия",
+        photoLink: "",
+        hashTags: ["ошибка", "tag"],
+        likes: []
+
+    },
+    {
+        id: "11",
+        description: "я не плачю это дощ",
+        createdAt: new Date('2020-05-22T23:00:00'),
+        author: "Анастасия",
+        photoLink: "",
+        hashTags: ["hashtag", "tag"],
+        likes: []
+
     },
     {
         id: "20",
