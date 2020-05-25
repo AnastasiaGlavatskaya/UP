@@ -13,32 +13,50 @@
     <div class="username" id="username">
         <template id="userTemplate">
             <div class="name" data-target="globalName"></div>
-
         </template>
     </div>
-    <div class="logOut">
+
+    <div class="logIn" onmousedown="return false">
+        Войти
+    </div>
+
+    <div class="sign-block">
+        <div class="signn">
+            <form name="sign"  id="sign">
+
+                <input type="text" name="log" id="log"  placeholder="введите логин">
+                <input type="password" name="password"  id="password" placeholder="введите пароль">
+               <!-- <input type="submit" id="in"  onClick="Complete();" value="Войти"> -->
+
+            </form>
+        </div>
+    </div>
+
+    <div class="logOut" onmousedown="return false">
         Выйти
     </div>
 </header>
 <body>
 
 <main>
-<div class="posts" id="notes">
-
+<iframe name="myIFR" style="display: none"></iframe>
+<div class="posts" >
+    <form name = "posts" class="postsForm" id="notes" target="myIFR" >
     <template id="template">
     <div class="post" id="">
         <img src="fox_avatar.jpg"  align="justify" alt="avatar"/>
         <div class="name" data-target="author">
         </div>
         <div class="edit">
-            <button>
+            <button class="editButton">
                 Редактировать
             </button>
-            <button>
+            <button class="deleteButton">
                 Удалить
             </button>
         </div>
 
+        <img class="photo" data-target="photoLink">
 
         <div class="text" data-target="description">
 
@@ -50,16 +68,17 @@
                 Мне нравится
             </button>
         </div>
+
         <div class="time" data-target="createdAt">
 
         </div>
     </div>
     </template>
-
+    </form>
 
 
     <div class="loadMore">
-        <button>
+        <button id="load" onmousedown="return false">
             Загрузить еще
         </button>
     </div>
@@ -70,8 +89,13 @@
     Добавить пост
     </button>
 </div>
+    <form class="addEditPost" name="addEditPost">
+        <textarea name="description" placeholder="Введите текст поста" cols="50" rows="6"></textarea>
+        <textarea name="addHashtags" placeholder="hashtag hasntag (через пробел, без символа #)" cols="50" rows="2"></textarea>
+        <textarea name="photoLink" placeholder="Вставьте ссылку на картинку" cols="50" rows="2"></textarea>
+    </form>
 
-    <div class="filters">
+    <form class="filters" name="filters">
         <div class="title">
             Поиск
         </div>
@@ -80,9 +104,7 @@
                 По имени автора:
             </div>
             <div class="textBox">
-                <textarea name="text" cols="30" rows="1">
-Введите имя пользователя
-                </textarea>
+                <textarea name="author" placeholder="Введите имя пользователя" cols="30" rows="1"></textarea>
             </div>
         </div>
         <div class="byDate">
@@ -91,9 +113,11 @@
             </div>
             <div class="dateTitle">
                 с:
+                <input type="date" name="dateFrom" value="2020-01-01">
             </div>
             <div class="dateTitle">
                 по:
+                <input type="date" name="dateTo" value="2020-06-01">
             </div>
         </div>
         <div class="byTags">
@@ -101,22 +125,24 @@
                 По хештегам:
             </div>
             <div class="textBox">
-                <textarea name="text" cols="30" rows="1">
-#хештег #хештег
-                </textarea>
+                <textarea name="tags" placeholder="hashtag hasntag (через пробел, без символа #)" cols="30" rows="2"></textarea>
            </div>
         </div>
-
+    </form>
+    <div class="find">
+        <button>
+            Поиск
+        </button>
     </div>
 </main>
 
 <footer>
     <img src="fox_paw_text.png" id="logo" align="justify" alt="logo"/>
     <div class="date">
-        ,  02.03.2020
+        ,  26.05.2020
     </div>
     <div class="information">Glavatskaya A., group №5
-email   alisa.gomel.15@mail.ru
+email   glavatsk.18@gmail.com
             fpm.glavatsk@bsu.by
     </div>
 </footer>
